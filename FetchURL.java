@@ -1,5 +1,5 @@
 /*
-A program that fetches the information stored at a given URL on the web and saves that data to a file.
+A program that fetches the information stored at a given URL on the web and saves that data to a new file.
 **/
 
 import java.io.*;
