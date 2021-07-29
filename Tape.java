@@ -4,8 +4,13 @@ public class Tape {
 
   // Default constructor
   // Initializes the tape with single empty cell
+  // Constructior to create a black tape with single cell, which contains a blank space
   public Tape() {
-    this.currentCell = new Cell();
+    Cell newCell = new Cell();
+    newCell.content = ' ';
+    newCell.prev = null;
+    newCell.next = null;
+    currentCell = newCell;
   }
 
   // Method to get the current cell
@@ -32,6 +37,8 @@ public class Tape {
   public void moveLeft() {
     if (currentCell.getPrev() == null) {
       Cell newCell = new Cell();
+      newCell.setContent("");
+      newCell.getPrev(null);
       newCell.setNext(currentCell);
       currentCell.setPrev(newCell);
     }
@@ -48,6 +55,8 @@ public class Tape {
   public void moveRight() {
     if (currentCell.getNext() == null) {
       Cell newCell = new Cell();
+      newCell.setContent("");
+      newCell.getNext(null);
       newCell.setPrev(currentCell);
       currentCell.setNext(newCell);
     }
@@ -59,6 +68,7 @@ public class Tape {
   // Method that returns a string consisting of the chars from all the cells on the tape read
   // left to right except that leading or trailing black characters will be discarded
   // Pointer does not move here
+  // Returns a String consisting of the chars from all the cells on the Tape
   public String getTapeContents() {
 
     // Temporary cell to traverse the tape and fetch content
@@ -72,7 +82,7 @@ public class Tape {
     // String to store the contect of the tape
     String contents = "";
 
-    // String to store temporary parts of teh tape with spaces
+    // String to store temporary parts of the tape with spaces
     String pendingSpaces = "";
 
     // Traverse the tape from left to right
